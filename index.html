@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixelise Portfolio</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for Retro Theme -->
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffcc00, #1b1114);
+            font-family: 'Press Start 2P', cursive;
+            color: #000;
+            text-align: center;
+            position: relative;
+        }
+
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px) 0 0,
+                linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px) 0 0;
+            background-size: 30px 30px;
+            animation: gridFlow 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes gridFlow {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .container {
+            position: relative;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0 #333;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .pixel-font {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.5em;
+            color: #010c01;
+            /* Bright green for pixel text */
+        }
+
+        .flicker {
+            animation: flicker 1.5s infinite;
+        }
+
+        .pixel-button {
+            background-color: #ffcc00;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-family: 'Press Start 2P', cursive;
+            color: #000;
+        }
+
+        .pixel-button:hover {
+            background-color: #000;
+            color: #ffcc00;
+            transform: scale(1.1);
+        }
+
+        .pixel-avatar {
+            width: 120px;
+            height: 120px;
+            image-rendering: pixelated;
+            border: 4px solid #000800;
+            /* Bright green border */
+        }
+
+        .bat-logo {
+            animation: batAnimation 2s infinite;
+            width: 150px;
+            height: 80px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @keyframes batAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .custom-modal .modal-content {
+            background: #f8f9fa;
+            color: #000;
+            border: 2px solid #000;
+            padding: 20px;
+            box-shadow: 0 0 10px #000;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border: none;
+        }
+
+        .card {
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0 #333;
+            background: #fff;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .animated-background {
+            background: url('retro-pattern.png');
+            background-size: cover;
+        }
+
+        footer {
+            background-color: #ffcc00;
+            /* Bright pink for footer */
+            padding: 10px;
+            border-top: 2px solid #000;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 0 #303230;
+            animation: navAnimation 2s infinite;
+            background-color: #ffcc00;
+            /* Bright yellow for navbar */
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #000 !important;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .navbar-brand:hover,
+        .nav-link:hover {
+            color: #ffcc00 !important;
+        }
+
+        .retro-border {
+            border: 5px solid #000;
+            box-shadow: 0 0 5px #000 inset;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .retro-divider {
+            height: 2px;
+            background: #000;
+            margin: 20px 0;
+        }
+
+        .pixel-wizard {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('pixel-wizard.png') no-repeat center center;
+            background-size: cover;
+            z-index: 10;
+            animation: moveWizard 10s infinite, popInOut 5s infinite;
+        }
+
+        @keyframes popInOut {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        @keyframes moveWizard {
+            0% {
+                top: 10%;
+                left: 10%;
+            }
+
+            25% {
+                top: 10%;
+                left: 80%;
+            }
+
+            50% {
+                top: 80%;
+                left: 80%;
+            }
+
+            75% {
+                top: 80%;
+                left: 10%;
+            }
+
+            100% {
+                top: 10%;
+                left: 10%;
+            }
+        }
+
+        .sticky-note {
+            position: absolute;
+            width: 200px;
+            background: #ffeb3b;
+            border: 2px solid #000;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            cursor: move;
+            z-index: 15;
+            font-family: 'Press Start 2P', cursive;
+            overflow: hidden;
+        }
+
+        .sticky-note .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #000;
+            color: #ffeb3b;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .sticky-note .close-btn:hover {
+            background: #ffeb3b;
+            color: #000;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0 #333;
+            background: #fff;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            padding: 5px;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .gallery-item:hover {
+            box-shadow: 0 0 10px #ffcc00;
+            transform: scale(1.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Retro Grid Background -->
+    <div class="grid-background"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Pixelise</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#introduction">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Popup Modal -->
+    <div class="modal fade custom-modal" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="welcomeModalLabel">Welcome!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body flicker">
+                    <p>Welcome to my portfolio! I'm excited to share my work with you.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn pixel-button" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="container mt-5 retro-border">
+        <h1 class="pixel-font flicker">Welcome to My Portfolio</h>
+            <img src="avatar.png" alt="Pixel Avatar" class="pixel-avatar rounded-circle my-4">
+            <p class="lead pixel-font">Hello! I'm <span class="flicker">Ashutosh</span>, a web developer with a love for
+                retro design.</p>
+    </section>
+
+    <section id="gallery" class="container mt-5 retro-border">
+        <h2 class="pixel-font">Photo Gallery</h2>
+        <div class="row" id="galleryContainer">
+            <!-- Gallery items will be added here dynamically -->
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container mt-5 retro-border">
+        <h2 class="pixel-font">My Projects</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="project1.png" class="card-img-top" alt="Project 1">
+                    <div class="card-body">
+                        <h5 class="card-title pixel-font">Project One</h5>
+                        <p class="card-text">Description of Project One.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="project2.png" class="card-img-top" alt="Project 2">
+                    <div class="card-body">
+                        <h5 class="card-title pixel-font">Project Two</h5>
+                        <p class="card-text">Description of Project Two.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="project3.png" class="card-img-top" alt="Project 3">
+                    <div class="card-body">
+                        <h5 class="card-title pixel-font">Project Three</h5>
+                        <p class="card-text">Description of Project Three.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="add-sticky-note" class="container mt-5 retro-border">
+        <h2 class="pixel-font">Add a Sticky Note</h2>
+        <form id="sticky-note-form">
+            <div class="mb-3">
+                <label for="sticky-text" class="form-label pixel-font">Sticky Note Text</label>
+                <input type="text" class="form-control" id="sticky-text" required>
+            </div>
+            <button type="submit" class="btn pixel-button">create Sticky Note</button>
+        </form>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="container mt-5 retro-border">
+        <h2 class="pixel-font">Contact Me</h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label pixel-font">Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label pixel-font">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label pixel-font">Message</label>
+                <textarea class="form-control" id="message" rows="3" required></textarea>
+            </div>
+            <a href="mailto:ashuchikhalkar9@gmail.com" class="btn pixel-button">Send Email</a>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="pixel-font">© 2024 Pixelise - All rights reserved.</p>
+        <img src="bat-logo.png" alt="Pixel Bat Logo" class="bat-logo">
+    </footer>
+
+    <!-- Pixel Wizard Character and Quote Box -->
+    <div id="pixelCharacter" class="pixel-wizard"></div>
+    <div id="quoteBox" class="sticky-note"></div>
+
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function createStickyNote(text) {
+            const stickyNote = document.createElement('div');
+            stickyNote.className = 'sticky-note';
+            stickyNote.style.backgroundColor = getRandomColor();
+
+            // Create the close button
+            const closeButton = document.createElement('button');
+            closeButton.className = 'close-btn';
+            closeButton.textContent = 'X';
+            closeButton.onclick = function () {
+                document.body.removeChild(stickyNote);
+            };
+
+            // Append the close button and text to the sticky note
+            stickyNote.appendChild(closeButton);
+            stickyNote.appendChild(document.createTextNode(text));
+
+            document.body.appendChild(stickyNote);
+            makeDraggable(stickyNote);
+            const noteWidth = stickyNote.offsetWidth;
+            const noteHeight = stickyNote.offsetHeight;
+            stickyNote.style.left = `calc(50% - ${noteWidth / 2}px)`;
+            stickyNote.style.top = `calc(50% - ${noteHeight / 2}px)`;
+        }
+
+
+        document.getElementById('sticky-note-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const stickyText = document.getElementById('sticky-text').value;
+            createStickyNote(stickyText);
+            document.getElementById('sticky-text').value = '';
+        });
+
+        // Array of programming quotes
+        const quotes = [
+            "Code is like humor. When you have to explain it, it’s bad.",
+            "Experience is the name everyone gives to their mistakes.",
+            "In programming, everything is a trade-off.",
+            "It’s not a bug – it’s an undocumented feature.",
+            "Talk is cheap. Show me the code."
+        ];
+
+        const images = [
+            { src: 'avatar.png', caption: 'Image One' },
+            { src: 'bat-logo.png', caption: 'Image Two' },
+            { src: 'pixel-wizard.png', caption: 'Image Three' },
+            { src: 'fk.png', caption: 'Image Three' },
+            // Add more images as needed
+        ];
+        // Function to create a gallery item
+        function createGalleryItem(image) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = image.caption;
+
+            const caption = document.createElement('div');
+            caption.className = 'caption';
+            caption.textContent = image.caption;
+
+            item.appendChild(img);
+            item.appendChild(caption);
+
+            return item;
+        }
+
+        // Populate the gallery
+        images.forEach(image => {
+                const galleryItem = createGalleryItem(image);
+                galleryContainer.appendChild(galleryItem);
+            });
+        // Function to get a random quote
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        // Function to make an element draggable
+        function makeDraggable(element) {
+            let offsetX = 0, offsetY = 0, mouseX = 0, mouseY = 0;
+
+            element.onmousedown = function (e) {
+                e.preventDefault();
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                document.onmousemove = function (e) {
+                    e.preventDefault();
+                    offsetX = mouseX - e.clientX;
+                    offsetY = mouseY - e.clientY;
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    element.style.top = (element.offsetTop - offsetY) + "px";
+                    element.style.left = (element.offsetLeft - offsetX) + "px";
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+            };
+        }
+
+        // Display random quote on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const quoteBox = document.getElementById('quoteBox');
+            const pixelCharacter = document.getElementById('pixelCharacter');
+            const galleryContainer = document.getElementById('galleryContainer');
+           
+
+            
+
+
+            function createCloseButton(element) {
+                const closeButton = document.createElement('button');
+                closeButton.className = 'close-btn';
+                closeButton.textContent = 'X';
+                closeButton.onclick = function () {
+                    element.style.display = 'none'; // Hide the quote box
+                };
+                element.appendChild(closeButton);
+            }
+
+            quoteBox.textContent = getRandomQuote();
+
+            // Optional: change quote every 5 seconds
+            setInterval(() => {
+                quoteBox.textContent = getRandomQuote();
+            }, 5000);
+
+            // Make the quote box draggable
+            makeDraggable(quoteBox);
+
+            // Create and add the close button to the quote box
+            createCloseButton(quoteBox);
+
+            const noteWidth = quoteBox.offsetWidth;
+            const noteHeight = quoteBox.offsetHeight;
+            quoteBox.style.left = `calc(50% - ${noteWidth / 2}px)`;
+            quoteBox.style.top = `calc(50% - ${noteHeight / 2}px)`;
+            // Show welcome modal on page load
+            const welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+            welcomeModal.show();
+
+
+        });
+
+    </script>
+</body>
+
+</html>
