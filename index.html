@@ -49,7 +49,8 @@
 
         .container {
             position: relative;
-            background: #fff;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px) 0 0,
+                linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px) 0 0;
             border: 2px solid #000;
             padding: 20px;
             border-radius: 10px;
@@ -187,7 +188,7 @@
 
         .navbar-brand:hover,
         .nav-link:hover {
-            color: #ffcc00 !important;
+            color: #ffffff !important;
         }
 
         .retro-border {
@@ -299,20 +300,21 @@
             margin: 10px;
             border: 2px solid #000;
             box-shadow: 2px 2px 0 #333;
-            background: #fff;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px) 0 0,
+                linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px) 0 0;
             overflow: hidden;
             border-radius: 10px;
         }
 
         .gallery-item img {
-            width: 100%;
-            height: auto;
+            width: 105%;
+            height: 100%;
         }
 
         .gallery-item .caption {
             position: absolute;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+
             color: #fff;
             width: 100%;
             text-align: center;
@@ -324,6 +326,12 @@
             box-shadow: 0 0 10px #ffcc00;
             transform: scale(1.05);
             transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        ul {
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 1.5rem;
         }
     </style>
     <!-- Google Fonts -->
@@ -338,20 +346,26 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Pixelise</a>
+            <button id="reloadButton" class="pixel-button">Reload Change Theme</button>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler" style="color: #010c01;">***</span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#introduction">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#projects">Projects</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
+                    </li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#aboutMeModal"> About Me</a>
+                    <li>
+
                     </li>
                 </ul>
             </div>
@@ -381,8 +395,14 @@
     <section id="introduction" class="container mt-5 retro-border">
         <h1 class="pixel-font flicker">Welcome to My Portfolio</h>
             <img src="avatar.png" alt="Pixel Avatar" class="pixel-avatar rounded-circle my-4">
+
             <p class="lead pixel-font">Hello! I'm <span class="flicker">Ashutosh</span>, a web developer with a love for
-                retro design.</p>
+                retro design.
+            </p>
+            <button type="button" class="btn pixel-button rounded " data-bs-toggle="modal"
+                data-bs-target="#aboutMeModal">
+                About Me
+            </button>
     </section>
 
     <section id="gallery" class="container mt-5 retro-border">
@@ -392,6 +412,124 @@
         </div>
     </section>
 
+    <div class="modal fade" id="aboutMeModal" tabindex="-1" aria-labelledby="aboutMeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title " id="aboutMeModalLabel" style="text-decoration: underline;">Ashutosh
+                        Chikhalkar</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Amravati, Maharashtra, INDIA | MO: +91 7385726720 | ashuchikhalkar9@gmail.com
+                    </p>
+                    <p class="text-center">
+                        <a href="https://github.com/DarkSHADOW2626" class="btn pixel-button">GitHub</a>
+                        <a href="https://www.linkedin.com/in/ashutosh-chikhalkar-webdev/"
+                            class="btn pixel-button">LinkedIn</a>
+                    </p>
+
+                    <h2>Education</h2>
+                    <h3>P.G. Department of Computer Science and Technology, HVPM</h3>
+                    <p>Masters of Computer Application | 8.96 CGPA</p>
+                    <p>August 2022</p>
+
+                    <h3>Degree College of Physical Education, H.V.P.M.</h3>
+                    <p>Bachelor of Computer Application | 6.81 CGPA</p>
+                    <p>Major in Computer Science; Minors in Mathematics</p>
+                    <p>November 2020</p>
+
+                    <h3>Govt. Jr. Technical College Amravati</h3>
+                    <p>H.S.C | 58.00%</p>
+                    <p>February 2017</p>
+
+                    <h3>Naryandas Laddha High School Amravati</h3>
+                    <p>S.S.C | 68.60%</p>
+                    <p>March 2015</p>
+
+                    <h2>Objective</h2>
+                    <p>I am eager to join your esteemed organization, where I can leverage my skills to make a
+                        meaningful contribution to your success while fostering my own professional growth. My ultimate
+                        career aspiration is to become a dynamic leader in the corporate world, a journey that aligns
+                        with my desire to unlock my full potential and drive continuous growth and success for the
+                        organization.</p>
+
+                    <h2>Experience</h2>
+                    <h3>Cognizant Technology Solutions (India)</h3>
+                    <p>Programmer (Web Developer L1) | March 2023 – Jun 2024</p>
+                    <ul>
+                        <li>Engineered and nurtured cutting-edge web-based dashboards catering to McDonald's, ensuring
+                            unparalleled user satisfaction and operational fluidity.</li>
+                        <li>Orchestrated seamless collaboration across multifaceted teams, orchestrating the seamless
+                            amalgamation of requirements, design, and feature implementation within strict project
+                            timelines.</li>
+                        <li>Leveraged a rich toolkit encompassing HTML, CSS, JavaScript, and state-of-the-art frameworks
+                            to sculpt responsive, visually captivating interfaces.</li>
+                        <li>Served as a beacon of support, proactively troubleshooting existing applications, and
+                            swiftly mitigating issues to curtail downtimes to a minimum.</li>
+                        <li>Played an integral role in milestone delivery, consistently exceeding quality benchmarks and
+                            surpassing client expectations.</li>
+                        <li>Championed documentation endeavours, meticulously crafting technical specifications and user
+                            manuals to facilitate knowledge dissemination and ensure streamlined future maintenance.
+                        </li>
+                    </ul>
+
+                    <h2>Key Achievements</h2>
+                    <ul>
+                        <li>Pioneered the implementation of the bill generation feature enhancement, culminating in a
+                            remarkable 20% enhancement in dashboard performance.</li>
+                        <li>Garnered accolades for adeptly resolving critical support tickets within stringent SLAs,
+                            earning accolades for upholding impeccable client satisfaction metrics.</li>
+                    </ul>
+
+                    <h2>University Projects</h2>
+                    <h3>News Distribution Portal</h3>
+                    <p>March 2022</p>
+                    <ul>
+                        <li>Led a collaborative effort to create a cutting-edge News Distribution Page exclusively for
+                            our college organization.</li>
+                        <li>Designed a visually appealing, user-friendly web platform with real-time notifications for
+                            seamless news and updates delivery.</li>
+                        <li>Leveraged HTML, CSS, JavaScript, and database management skills to optimize information
+                            delivery.</li>
+                        <li>Transformed information dissemination into an engaging and efficient experience, fostering
+                            improved communication and connectivity within the college community.</li>
+                    </ul>
+
+                    <h2>Activities</h2>
+                    <ul>
+                        <li>Class Representative, BCA Final Year | July 2019 – November 2020</li>
+                        <ul>
+                            <li>Facilitated Communication: Acted as a liaison between fellow students and faculty,
+                                ensuring effective communication and addressing concerns.</li>
+                            <li>Organized Class Meetings: Coordinated and led regular class meetings to discuss academic
+                                matters, upcoming events, and student feedback.</li>
+                            <li>Event Coordination: Collaborated with the student body to organize class events and
+                                activities, promoting camaraderie and engagement.</li>
+                            <li>Academic Support: Assisted classmates with academic queries and provided information
+                                about coursework, deadlines, and resources.</li>
+                        </ul>
+                    </ul>
+
+                    <h2>Additional Skills</h2>
+                    <ul>
+                        <li>Programming languages: C, Python, Java (Object Oriented Programming and DBMS Concept)</li>
+                        <li>Web technologies: HTML5, CSS, JavaScript (React.js)</li>
+                        <li>Database: MySQL, Oracle SQL DB, SQL (Good command over DDL and DML)</li>
+                        <li>Operating Systems: Windows, Linux, Windows Server 2016, ServiceNow, BASH</li>
+                        <li>Cloud basics: GCP</li>
+                    </ul>
+
+                    <h2>Interests</h2>
+                    <ul>
+                        <li>IoT</li>
+                        <li>Fitness and Marathon Running</li>
+                        <li>Content creation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Projects Section -->
     <!-- <section id="projects" class="container mt-5 retro-border">
         <h2 class="pixel-font">My Projects</h2>
@@ -524,17 +662,20 @@
         ];
 
         const images = [
-            { src: 'avatar.png', caption: 'Image One' },
-            { src: 'bat-logo.png', caption: 'Image Two' },
-            { src: 'pixel-wizard.png', caption: 'Image Three' },
-            { src: 'fk.png', caption: 'Image Three' },
+            { src: 'IMG1.png', caption: '' },
+            { src: 'IMG2.png', caption: '' },
+            { src: 'IMG3.png', caption: '' },
+            { src: 'IMG4.png', caption: '' },
             // Add more images as needed
         ];
         // Function to create a gallery item
         function createGalleryItem(image) {
+
+            const col = document.createElement('div');
+            col.className = 'col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4';
+
             const item = document.createElement('div');
             item.className = 'gallery-item';
-
             const img = document.createElement('img');
             img.src = image.src;
             img.alt = image.caption;
@@ -551,9 +692,9 @@
 
         // Populate the gallery
         images.forEach(image => {
-                const galleryItem = createGalleryItem(image);
-                galleryContainer.appendChild(galleryItem);
-            });
+            const galleryItem = createGalleryItem(image);
+            galleryContainer.appendChild(galleryItem);
+        });
         // Function to get a random quote
         function getRandomQuote() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
@@ -589,10 +730,6 @@
             const quoteBox = document.getElementById('quoteBox');
             const pixelCharacter = document.getElementById('pixelCharacter');
             const galleryContainer = document.getElementById('galleryContainer');
-           
-
-            
-
 
             function createCloseButton(element) {
                 const closeButton = document.createElement('button');
@@ -604,28 +741,70 @@
                 element.appendChild(closeButton);
             }
 
-            quoteBox.textContent = getRandomQuote();
 
+            // Set random background gradient for the body
+            const color1 = getRandomColor();
+            const color2 = getRandomColor();
+            document.body.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+
+            // Set random colors for buttons
+            const buttons = document.querySelectorAll('.pixel-button');
+            buttons.forEach(button => {
+                button.style.backgroundColor = getRandomColor();
+                button.style.borderColor = getRandomColor();
+
+            });
+
+            // Set random colors for titles in the About Me modal
+            const modalTitles = document.querySelectorAll('#aboutMeModal h2, #aboutMeModal h3');
+            modalTitles.forEach(title => {
+                title.style.color = getRandomColor();
+            });
+
+            // Adding spacing after each list item in the About Me modal
+            const modalListItems = document.querySelectorAll('#aboutMeModal li');
+            modalListItems.forEach(li => {
+                li.style.marginBottom = '10px';
+            });
             // Optional: change quote every 5 seconds
             setInterval(() => {
                 quoteBox.textContent = getRandomQuote();
             }, 5000);
 
+
+            // Adding emojis to titles in the About Me modal
+            const titleEmojis = {
+                'Education': '🎓',
+                'Objective': '🎯',
+                'Experience': '💼',
+                'Key Achievements': '🏆',
+                'University Projects': '🛠️',
+                'Activities': '🏃‍♂️',
+                'Additional Skills': '🧰',
+                'Interests': '🌟'
+            };
+
+            modalTitles.forEach(title => {
+                const text = title.textContent.trim();
+                if (titleEmojis[text]) {
+                    title.textContent = `${titleEmojis[text]} ${text}`;
+                }
+            });
+
+            quoteBox.textContent = getRandomQuote();
             // Make the quote box draggable
             makeDraggable(quoteBox);
 
             // Create and add the close button to the quote box
             createCloseButton(quoteBox);
-
-            const noteWidth = quoteBox.offsetWidth;
-            const noteHeight = quoteBox.offsetHeight;
-            quoteBox.style.left = `calc(50% - ${noteWidth / 2}px)`;
-            quoteBox.style.top = `calc(50% - ${noteHeight / 2}px)`;
             // Show welcome modal on page load
             const welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
             welcomeModal.show();
 
 
+        });
+        document.getElementById('reloadButton').addEventListener('click', function () {
+            location.reload(); // Reloads the current page
         });
 
     </script>
